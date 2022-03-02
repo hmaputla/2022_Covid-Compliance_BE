@@ -50,12 +50,14 @@ app.get('/admin',(req,res)=>{
 
 
 // delete a record from the admin table
-app.delete('/admin/:admin_id',(req,res)=>{
-     let qID = req.params.id;
-     let qr = `delete from user where admin_id = ${qID}`;
+app.delete('/admin/:Admin_id',(req,res)=>{
+     let qID =req.params.Admin_id;
+      
+     let qr = `delete from admin where Admin_id = '${qID}'`;
      db.query(qr,(err,result)=>{
 
         if(err) {console.log(err);}
+    
            res.send(
                {
                    message:'data deleted '
