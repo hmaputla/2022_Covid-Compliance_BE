@@ -28,10 +28,10 @@ db.connect(err=>{
 
 });
 
-// viewing everything from the admin table
-app.get('/admin',(req,res)=>{
+// viewing everything from the user table
+app.get('/user',(req,res)=>{
  
-    let sql = 'select * from admin';
+    let sql = 'select * from user';
     db.query(sql,(err,result)=>{
         if (err)
         {
@@ -49,11 +49,11 @@ app.get('/admin',(req,res)=>{
 });
 
 
-// delete a record from the admin table
-app.delete('/admin/:Admin_id',(req,res)=>{
-     let qID =req.params.Admin_id;
+// delete a record from the user table
+app.delete('user/:User_id',(req,res)=>{
+     let qID =req.params.User_id;
       
-     let qr = `delete from admin where Admin_id = '${qID}'`;
+     let qr = `delete from user where User_id = '${qID}'`;
      db.query(qr,(err,result)=>{
 
         if(err) {console.log(err);}
