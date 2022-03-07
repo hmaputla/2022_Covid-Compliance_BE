@@ -7,14 +7,18 @@ const cors = require('cors');
 const app=express();
 const mysql=require('mysql2');
 
+const router = express.Router();
+const viewall = require('./routes/viewall');
+const delete_user =  require('./routes/delete');
+/*
 //instantiating 
 app.use(cors());
 app.use(bodyparser.json());
-
+*/
 
 //creating database connection
 
-const db=mysql.createConnection({host:'localhost',user:'root',password:'',database:'covid_compliance',port:'3306'})
+const db=mysql.createConnection({host:'localhost',user:'root',password:'',database:'covid_compliance',port:'3306'});
 
 //check the database  connection
 
@@ -27,8 +31,10 @@ db.connect(err=>{
     
 
 });
+app.use('/viewall',viewall);
+app.use('/delete',delete_user);
 
-// viewing everything from the user table
+/* viewing everything from the user table
 app.get('/user',(req,res)=>{
  
     let sql = 'select * from user';
@@ -47,10 +53,10 @@ app.get('/user',(req,res)=>{
         }
     });
 });
+*/
 
-
-// delete a record from the user table
-app.delete('user/:User_id',(req,res)=>{
+ //delete a record from the user table
+/*app.delete('/user/:User_id',(req,res)=>{
      let qID =req.params.User_id;
       
      let qr = `delete from user where User_id = '${qID}'`;
@@ -69,10 +75,13 @@ app.delete('user/:User_id',(req,res)=>{
 
 
 });
+*/
 
 
 
 
 
-//server port 
+
+//server
+
 app.listen(3000,()=>{console.log('server running')})
