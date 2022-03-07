@@ -10,11 +10,14 @@ const mysql=require('mysql2');
 const router = express.Router();
 const viewall = require('./routes/viewall');
 const delete_user =  require('./routes/delete');
-/*
+const add=require('./routes/add_user');
+const view_user=require('./routes/view_user');
+const update=require('./routes/update');
+
 //instantiating 
 app.use(cors());
 app.use(bodyparser.json());
-*/
+
 
 //creating database connection
 
@@ -33,6 +36,9 @@ db.connect(err=>{
 });
 app.use('/viewall',viewall);
 app.use('/delete',delete_user);
+app.use('/view_user',view_user);
+app.use('/add_user',add);
+app.use('/update',update);
 
 /* viewing everything from the user table
 app.get('/user',(req,res)=>{
@@ -83,5 +89,8 @@ app.get('/user',(req,res)=>{
 
 
 //server
+
+
+
 
 app.listen(3000,()=>{console.log('server running')})

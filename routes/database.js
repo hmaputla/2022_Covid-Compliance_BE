@@ -4,7 +4,7 @@ const router = express.Router();
 const bodyparser=require('body-parser');
 const cors = require('cors');
 const app=express();
-module.exports = router;
+
 
 const db=mysql.createConnection({host:'localhost',user:'root',password:'',database:'covid_compliance',port:'3306'})
 
@@ -19,3 +19,4 @@ db.connect(err=>{
     
 
 });
+module.exports=db;
