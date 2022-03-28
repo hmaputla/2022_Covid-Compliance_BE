@@ -21,7 +21,7 @@ router.get('/admin',(req,res)=>{
     //instatiating user variables
 
 
-    let adminId =req.body.adminId;
+    let User_Id =req.body.User_Id;
     let password=req.body.password;
    
 
@@ -29,7 +29,7 @@ router.get('/admin',(req,res)=>{
 
 
 
-let qr=`select * from admin where admin_id ='${adminId}' and Password='${password}' limit 1 `;
+let qr=`select * from admin where admin_id ='${User_Id}' and Password='${password}' limit 1 `;
 
 database.query(qr,(err,result)=>{
 
@@ -39,7 +39,7 @@ database.query(qr,(err,result)=>{
    {
     res.send({
         message:'user found',
-        data:result
+       User_Id:User_Id
         
     });
    }
