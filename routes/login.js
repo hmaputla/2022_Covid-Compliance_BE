@@ -22,7 +22,7 @@ router.get('/user',(req,res)=>{
     //instatiating user variables
 
 
-    let userId =req.body.userId;
+    let User_Id =req.body.User_Id;
     let password=req.body.password;
    
 
@@ -30,7 +30,7 @@ router.get('/user',(req,res)=>{
 
 
 
-let qr=`select * from user where User_id ='${userId}' and Password='${password}' limit 1 `;
+let qr=`select * from user where User_id ='${User_Id}' and Password='${password}' limit 1 `;
 
 database.query(qr,(err,result)=>{
 
@@ -39,15 +39,16 @@ database.query(qr,(err,result)=>{
    if(result.length>0)
    {
     res.send({
-        message:'user found',
-        data:result
+        message:'successful',
+        
+        User_Id:User_Id
         
     });
    }
    else 
    {
         res.send({
-         message:'no user'
+         message:'not successful'
     })
   }
 
