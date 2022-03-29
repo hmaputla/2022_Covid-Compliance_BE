@@ -46,7 +46,7 @@ database.query(qr,(err,result)=>{
    else 
    {
         res.send({
-         message:'not success'
+         message:'unsuccessfull'
     })
   }
 
